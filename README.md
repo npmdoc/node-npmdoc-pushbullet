@@ -1,9 +1,14 @@
-# api documentation for  [pushbullet (v2.0.0)](https://github.com/alexwhitman/node-pushbullet-api#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-pushbullet.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-pushbullet) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-pushbullet.svg)](https://travis-ci.org/npmdoc/node-npmdoc-pushbullet)
+# npmdoc-pushbullet
+
+#### api documentation for  [pushbullet (v2.0.0)](https://github.com/alexwhitman/node-pushbullet-api#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-pushbullet.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-pushbullet) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-pushbullet.svg)](https://travis-ci.org/npmdoc/node-npmdoc-pushbullet)
+
 #### Use PushBullets REST API
 
-[![NPM](https://nodei.co/npm/pushbullet.png?downloads=true)](https://www.npmjs.com/package/pushbullet)
+[![NPM](https://nodei.co/npm/pushbullet.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/pushbullet)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-pushbullet/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-pushbullet_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-pushbullet/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-pushbullet/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-pushbullet/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-pushbullet/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-pushbullet/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-pushbullet/build/screenCapture.npmPackageListing.svg)
 
@@ -17,8 +22,7 @@
 
 {
     "author": {
-        "name": "Alex Whitman",
-        "email": "alex@alexwhitman.com"
+        "name": "Alex Whitman"
     },
     "bugs": {
         "url": "https://github.com/alexwhitman/node-pushbullet-api/issues"
@@ -47,13 +51,11 @@
     "main": "index.js",
     "maintainers": [
         {
-            "name": "alexwhitman",
-            "email": "alex@alexwhitman.com"
+            "name": "alexwhitman"
         }
     ],
     "name": "pushbullet",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/alexwhitman/node-pushbullet-api.git"
@@ -64,25 +66,6 @@
     "version": "2.0.0"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module pushbullet](#apidoc.module.pushbullet)
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>API_BASE
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>CHANNELS_END_POINT
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>CHATS_END_POINT
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>DEVICES_END_POINT
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>EPHEMERALS_END_POINT
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>PUSH_END_POINT
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>SUBS_END_POINT
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>UPLOAD_END_POINT
-1.  string <span class="apidocSignatureSpan">pushbullet.</span>USERS_END_POINT
-
-
-
-# <a name="apidoc.module.pushbullet"></a>[module pushbullet](#apidoc.module.pushbullet)
 
 
 
