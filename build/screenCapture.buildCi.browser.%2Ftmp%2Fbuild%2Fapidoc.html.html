@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/alexwhitman/node-pushbullet-api#readme"
-
-    >pushbullet (v2.0.0)</a>
+    <a href="https://github.com/alexwhitman/node-pushbullet-api#readme">pushbullet (v2.0.0)</a>
 </h1>
 <h4>Use PushBullets REST API</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.pushbullet">module pushbullet</a><ol>
 
@@ -592,14 +585,14 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function PushBullet(apiKey) {
 	if ( ! apiKey) {
-		throw new Error(&#x27;API Key is required&#x27;);
+		throw new Error('API Key is required');
 	}
 
 	this.apiKey = apiKey;
 
 	this.request = request.defaults({
 		headers: {
-			&#x27;Access-Token&#x27;: apiKey
+			'Access-Token': apiKey
 		},
 		json: true
 	});
@@ -625,37 +618,37 @@
 
 	self.client = new WebSocketClient();
 
-	self.client.on(&#x27;connectFailed&#x27;, function(error) {
-		self.emit(&#x27;error&#x27;, error);
+	self.client.on('connectFailed', function(error) {
+		self.emit('error', error);
 	});
 
-	self.client.on(&#x27;connect&#x27;, function(connection) {
+	self.client.on('connect', function(connection) {
 
 		self.connection = connection;
 
-		self.emit(&#x27;connect&#x27;);
+		self.emit('connect');
 
-		connection.on(&#x27;error&#x27;, function(error) {
-			self.emit(&#x27;error&#x27;, error);
+		connection.on('error', function(error) {
+			self.emit('error', error);
 		});
 
-		connection.on(&#x27;close&#x27;, function() {
-			self.emit(&#x27;close&#x27;);
+		connection.on('close', function() {
+			self.emit('close');
 		});
 
-		connection.on(&#x27;message&#x27;, function(message) {
-			if (message.type === &#x27;utf8&#x27;) {
+		connection.on('message', function(message) {
+			if (message.type === 'utf8') {
 				var data = JSON.parse(message.utf8Data);
-				self.emit(&#x27;message&#x27;, data);
+				self.emit('message', data);
 
-				if (data.type === &#x27;nop&#x27;) {
-					self.emit(&#x27;nop&#x27;);
+				if (data.type === 'nop') {
+					self.emit('nop');
 				}
-				else if (data.type === &#x27;tickle&#x27;) {
-					self.emit(&#x27;tickle&#x27;, data.subtype);
+				else if (data.type === 'tickle') {
+					self.emit('tickle', data.subtype);
 				}
-				else if (data.type === &#x27;push&#x27;) {
-					self.emit(&#x27;push&#x27;, data.push);
+				else if (data.type === 'push') {
+					self.emit('push', data.push);
 				}
 			}
 		});
@@ -663,7 +656,7 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 	notification_tag: null,                 // Set to the notification_tag field from the mirrored notification
-	source_user_iden: &#x27;ujpah72o0&#x27;,          // Set to the source_user_iden field from the mirrored notification
+	source_user_iden: 'ujpah72o0',          // Set to the source_user_iden field from the mirrored notification
 };
 
 pusher.dismissEphemeral(options, function(error, response) {});
@@ -717,14 +710,14 @@ var stream = pusher.stream();
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function PushBullet(apiKey) {
 	if ( ! apiKey) {
-		throw new Error(&#x27;API Key is required&#x27;);
+		throw new Error('API Key is required');
 	}
 
 	this.apiKey = apiKey;
 
 	this.request = request.defaults({
 		headers: {
-			&#x27;Access-Token&#x27;: apiKey
+			'Access-Token': apiKey
 		},
 		json: true
 	});
@@ -782,7 +775,7 @@ var stream = pusher.stream();
 Unmute a subscription.
 
 ```javascript
-pusher.unmuteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.unmuteSubscription('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">channelInfo</span>(channelTag, callback)
@@ -790,7 +783,7 @@ pusher.unmuteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response
 Get information about a channel.
 
 ```javascript
-pusher.channelInfo(&#x27;jblow&#x27;, function(error, response) {});
+pusher.channelInfo('jblow', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -825,7 +818,7 @@ pusher.channelInfo(&#x27;jblow&#x27;, function(error, response) {});
 Get information about a channel.
 
 ```javascript
-pusher.channelInfo(&#x27;jblow&#x27;, function(error, response) {});
+pusher.channelInfo('jblow', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">chats</span>([options], callback)
@@ -874,7 +867,7 @@ pusher.chats(options, function(error, response) {});
 Create a new chat.
 
 ```javascript
-pusher.createChat(&#x27;a@b.com&#x27;, function(error, response) {});
+pusher.createChat('a@b.com', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -913,7 +906,7 @@ Creates a new device.
 
 ```javascript
 var deviceOptions = {
-	nickname: &#x27;node-app&#x27;
+	nickname: 'node-app'
 };
 ...</pre></li>
     </ul>
@@ -939,7 +932,7 @@ var deviceOptions = {
 Delete a push.
 
 ```javascript
-pusher.deletePush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
+pusher.deletePush('udhrSpjAewzdwpCC', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">deleteAllPushes</span>(callback)
@@ -964,7 +957,7 @@ pusher.deleteAllPushes(function(error, response) {});
     <li>description and source-code<pre class="apidocCodePre">function deleteChat(chatIden, callback) {
 	var self = this;
 
-	self.request.post(PushBullet.CHATS_END_POINT + &#x27;/&#x27; + chatIden, function(error, response, body) {
+	self.request.post(PushBullet.CHATS_END_POINT + '/' + chatIden, function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
@@ -973,7 +966,7 @@ pusher.deleteAllPushes(function(error, response) {});
 Create a new chat.
 
 ```javascript
-pusher.createChat(&#x27;a@b.com&#x27;, function(error, response) {});
+pusher.createChat('a@b.com', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">deleteChat</span>(chatIden, callback)
@@ -981,7 +974,7 @@ pusher.createChat(&#x27;a@b.com&#x27;, function(error, response) {});
 Delete a chat.
 
 ```javascript
-pusher.deleteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.deleteChat('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -998,13 +991,13 @@ pusher.deleteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
     <li>description and source-code<pre class="apidocCodePre">function deleteDevice(deviceIden, callback) {
 	var self = this;
 
-	self.request.del(PushBullet.DEVICES_END_POINT + &#x27;/&#x27; + deviceIden, function(error, response, body) {
+	self.request.del(PushBullet.DEVICES_END_POINT + '/' + deviceIden, function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 var deviceOptions = {
-	nickname: &#x27;node-app&#x27;
+	nickname: 'node-app'
 };
 
 pusher.updateDevice(deviceIden, deviceOptions, function(error, response) {});
@@ -1015,7 +1008,7 @@ pusher.updateDevice(deviceIden, deviceOptions, function(error, response) {});
 Delete a device.
 
 ```javascript
-pusher.deleteDevice(&#x27;u1qSJddxeKwOGuGW&#x27;, function(error, response) {});
+pusher.deleteDevice('u1qSJddxeKwOGuGW', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1032,7 +1025,7 @@ pusher.deleteDevice(&#x27;u1qSJddxeKwOGuGW&#x27;, function(error, response) {});
     <li>description and source-code<pre class="apidocCodePre">function deletePush(pushIden, callback) {
 	var self = this;
 
-	self.request.del(PushBullet.PUSH_END_POINT + &#x27;/&#x27; + pushIden, function(error, response, body) {
+	self.request.del(PushBullet.PUSH_END_POINT + '/' + pushIden, function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
@@ -1041,7 +1034,7 @@ pusher.deleteDevice(&#x27;u1qSJddxeKwOGuGW&#x27;, function(error, response) {});
 Dismiss a push.
 
 ```javascript
-pusher.dismissPush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
+pusher.dismissPush('udhrSpjAewzdwpCC', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">deletePush</span>(pushIden, callback)
@@ -1049,7 +1042,7 @@ pusher.dismissPush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
 Delete a push.
 
 ```javascript
-pusher.deletePush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
+pusher.deletePush('udhrSpjAewzdwpCC', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1084,8 +1077,8 @@ pusher.deletePush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
 This module is very simple to use.  All you need is your PushBullet API key and you can begin pushing.
 
 ```javascript
-var PushBullet = require(&#x27;pushbullet&#x27;);
-var pusher = new PushBullet(&#x27;YOUR-API-KEY&#x27;);
+var PushBullet = require('pushbullet');
+var pusher = new PushBullet('YOUR-API-KEY');
 
 pusher.<span class="apidocCodeKeywordSpan">devices</span>(function(error, response) {
 	// response is the JSON response from the API
@@ -1110,13 +1103,13 @@ pusher.note(deviceParams, noteTitle, noteBody, function(error, response) {
     <li>description and source-code<pre class="apidocCodePre">function dismissEphemeral(ephemerealOptions, callback) {
 	var options = clone(ephemerealOptions);
 
-	options.type = &#x27;dismissal&#x27;;
+	options.type = 'dismissal';
 
 	this.sendEphemeral(options, callback);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    source_device_iden: &#x22;ujpah72o0sjAoRtnM0jc&#x22;, // The iden of the device sending this message
-    body: &#x22;http://www.google.com&#x22;,              // The text to copy to the clipboard
+    source_device_iden: "ujpah72o0sjAoRtnM0jc", // The iden of the device sending this message
+    body: "http://www.google.com",              // The text to copy to the clipboard
 };
 
 pusher.sendClipboard(options, function(error, response) {});
@@ -1128,8 +1121,8 @@ Dismiss an ephemeral.
 
 ```javascript
 var options = {
-	package_name: &#x27;com.pushbullet.android&#x27;, // Set to the package_name field from the mirrored notification
-	notification_id: &#x27;-8&#x27;,                  // Set to the notification_id field from the mirrored notification
+	package_name: 'com.pushbullet.android', // Set to the package_name field from the mirrored notification
+	notification_id: '-8',                  // Set to the notification_id field from the mirrored notification
 ...</pre></li>
     </ul>
 
@@ -1150,7 +1143,7 @@ var options = {
 Push a file to the specified device.
 
 ```javascript
-pusher.file(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;/path/to/file&#x27;, &#x27;Important file!&#x27;, function(error, response) {});
+pusher.file('u1qSJddxeKwOGuGW', '/path/to/file', 'Important file!', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">dismissPush</span>(pushIden, callback)
@@ -1158,7 +1151,7 @@ pusher.file(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;/path/to/file&#x27;, &#x27;Impor
 Dismiss a push.
 
 ```javascript
-pusher.dismissPush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
+pusher.dismissPush('udhrSpjAewzdwpCC', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1182,7 +1175,7 @@ pusher.dismissPush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
 
 	fs.stat(filePath, function(error, stats) {
 		if (error) {
-			if (typeof callback === &#x27;function&#x27;) {
+			if (typeof callback === 'function') {
 				callback(error);
 				return;
 			}
@@ -1207,7 +1200,7 @@ pusher.dismissPush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
 			// Not posting to the API so not using `this.request`
 			var req = request.post(body.upload_url, function(error, response) {
 				if (error || response.statusCode !== 204) {
-					if (typeof callback === &#x27;function&#x27;) {
+					if (typeof callback === 'function') {
 						if ( ! error) {
 							error = new Error(http.STATUS_CODES[response.statusCode]);
 						}
@@ -1217,7 +1210,7 @@ pusher.dismissPush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
 				}
 
 				var parameters = {
-					type: &#x27;file&#x27;,
+					type: 'file',
 					file_name: fileName,
 					file_type: fileType,
 					file_url: body.file_url
@@ -1235,7 +1228,7 @@ pusher.dismissPush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
 				form.append(key, body.data[key]);
 			});
 			var stream = fs.createReadStream(filePath);
-			form.append(&#x27;file&#x27;, stream);
+			form.append('file', stream);
 
 		});
 	});
@@ -1246,7 +1239,7 @@ pusher.dismissPush(&#x27;udhrSpjAewzdwpCC&#x27;, function(error, response) {});
 Push a link to the specified device.
 
 ```javascript
-pusher.link(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;GitHub&#x27;, &#x27;https://github.com/&#x27;, function(error, response) {});
+pusher.link('u1qSJddxeKwOGuGW', 'GitHub', 'https://github.com/', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">file</span>(deviceParams, filePath, message, callback)
@@ -1254,7 +1247,7 @@ pusher.link(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;GitHub&#x27;, &#x27;https://gith
 Push a file to the specified device.
 
 ```javascript
-pusher.file(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;/path/to/file&#x27;, &#x27;Important file!&#x27;, function(error, response) {});
+pusher.file('u1qSJddxeKwOGuGW', '/path/to/file', 'Important file!', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1279,7 +1272,7 @@ pusher.file(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;/path/to/file&#x27;, &#x27;Impor
 	var parameters = {};
 
 	var optionKeys = Object.keys(options);
-	if (optionKeys.length &#x3e; 0) {
+	if (optionKeys.length &gt; 0) {
 
 		parameters.qs = {};
 
@@ -1322,15 +1315,15 @@ pusher.file(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;/path/to/file&#x27;, &#x27;Impor
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function handleError(error, response, body, callback) {
 	if (error) {
-		if (typeof callback === &#x27;function&#x27;) {
+		if (typeof callback === 'function') {
 			callback(error);
 		}
 		return;
 	}
 
 	if (response.statusCode !== 200) {
-		if (typeof callback === &#x27;function&#x27;) {
-			if (body.error &#x26;&#x26; body.error.message) {
+		if (typeof callback === 'function') {
+			if (body.error &amp;&amp; body.error.message) {
 				callback(new Error(body.error.message));
 			}
 			else {
@@ -1340,7 +1333,7 @@ pusher.file(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;/path/to/file&#x27;, &#x27;Impor
 		return;
 	}
 
-	if (typeof callback === &#x27;function&#x27;) {
+	if (typeof callback === 'function') {
 		callback();
 	}
 }</pre></li>
@@ -1359,7 +1352,7 @@ pusher.file(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;/path/to/file&#x27;, &#x27;Impor
 			// Not posting to the API so not using `this.request`
 			var req = request.post(body.upload_url, function(error, response) {
 				if (error || response.statusCode !== 204) {
-					if (typeof callback === &#x27;function&#x27;) {
+					if (typeof callback === 'function') {
 ...</pre></li>
     </ul>
 
@@ -1378,7 +1371,7 @@ pusher.file(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;/path/to/file&#x27;, &#x27;Impor
 		return;
 	}
 
-	if (typeof callback === &#x27;function&#x27;) {
+	if (typeof callback === 'function') {
 		callback(null, body);
 	}
 }</pre></li>
@@ -1461,7 +1454,7 @@ The `options` parameter can use three attributes `cursor`, `limit` and
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function link(deviceParams, title, url, callback) {
 	this.push(deviceParams, {
-		type: &#x27;link&#x27;,
+		type: 'link',
 		title: title,
 		url: url
 	}, callback);
@@ -1471,7 +1464,7 @@ The `options` parameter can use three attributes `cursor`, `limit` and
 Push a note to the specified device.
 
 ```javascript
-pusher.note(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;New Note&#x27;, &#x27;Note body text&#x27;, function(error, response) {});
+pusher.note('u1qSJddxeKwOGuGW', 'New Note', 'Note body text', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">link</span>(deviceParams, name, url, callback)
@@ -1479,7 +1472,7 @@ pusher.note(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;New Note&#x27;, &#x27;Note body 
 Push a link to the specified device.
 
 ```javascript
-pusher.link(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;GitHub&#x27;, &#x27;https://github.com/&#x27;, function(error, response) {});
+pusher.link('u1qSJddxeKwOGuGW', 'GitHub', 'https://github.com/', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1496,7 +1489,7 @@ pusher.link(&#x27;u1qSJddxeKwOGuGW&#x27;, &#x27;GitHub&#x27;, &#x27;https://gith
     <li>description and source-code<pre class="apidocCodePre">function me(callback) {
 	var self = this;
 
-	self.request.get(PushBullet.USERS_END_POINT + &#x27;/me&#x27;, function(error, response, body) {
+	self.request.get(PushBullet.USERS_END_POINT + '/me', function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
@@ -1510,7 +1503,7 @@ If an error occurs at any part of the request the first argument will be an Erro
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">me</span>(callback);
 
-Get the current user&#x27;s information.
+Get the current user's information.
 
 ```javascript
 pusher.me(function(err, response) {});
@@ -1535,7 +1528,7 @@ pusher.me(function(err, response) {});
 Delete a chat.
 
 ```javascript
-pusher.deleteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.deleteChat('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">muteChat</span>(chatIden, callback)
@@ -1543,7 +1536,7 @@ pusher.deleteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
 Mute a chat.
 
 ```javascript
-pusher.muteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.muteChat('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1565,7 +1558,7 @@ pusher.muteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
 Subscribe to a channel.
 
 ```javascript
-pusher.unsubscribe(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.unsubscribe('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">muteSubscription</span>(subscriptionIden, callback)
@@ -1573,7 +1566,7 @@ pusher.unsubscribe(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
 Mute a subscription.
 
 ```javascript
-pusher.muteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.muteSubscription('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1589,14 +1582,14 @@ pusher.muteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) 
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function note(deviceParams, title, body, callback) {
 	this.push(deviceParams, {
-		type: &#x27;note&#x27;,
+		type: 'note',
 		title: title,
 		body: body
 	}, callback);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var PushBullet = require(&#x27;pushbullet&#x27;);
-var pusher = new PushBullet(&#x27;YOUR-API-KEY&#x27;);
+var PushBullet = require('pushbullet');
+var pusher = new PushBullet('YOUR-API-KEY');
 
 pusher.devices(function(error, response) {
 	// response is the JSON response from the API
@@ -1626,26 +1619,26 @@ The push functions (`note`, `link`, `file`) have a `deviceParams` parameter whic
 	var self = this;
 
 	// If deviceParams is a string it could be a contact email or device iden.
-	if (typeof deviceParams === &#x27;string&#x27;) {
-		if (deviceParams.indexOf(&#x27;@&#x27;) !== -1) {
+	if (typeof deviceParams === 'string') {
+		if (deviceParams.indexOf('@') !== -1) {
 			bullet.email = deviceParams;
 		}
 		else {
 			bullet.device_iden = deviceParams;
 		}
 	}
-	// If it&#x27;s a number it&#x27;s an old style device id.
-	else if (typeof deviceParams === &#x27;number&#x27;) {
+	// If it's a number it's an old style device id.
+	else if (typeof deviceParams === 'number') {
 		bullet.device_id = deviceParams;
 	}
-	// If it&#x27;s an object assume it defines a property of
+	// If it's an object assume it defines a property of
 	// - device_id
 	// - device_iden
 	// - email
 	// - channel_tag
 	// - client_iden
 	// and optionally source_device_iden
-	else if (typeof deviceParams === &#x27;object&#x27;) {
+	else if (typeof deviceParams === 'object') {
 		for (var param in deviceParams) {
 			bullet[param] = deviceParams[param];
 		}
@@ -1664,7 +1657,7 @@ The push functions (`note`, `link`, `file`) have a `deviceParams` parameter whic
  */
 PushBullet.prototype.note = function note(deviceParams, title, body, callback) {
 	this.<span class="apidocCodeKeywordSpan">push</span>(deviceParams, {
-		type: &#x27;note&#x27;,
+		type: 'note',
 		title: title,
 		body: body
 	}, callback);
@@ -1686,13 +1679,13 @@ PushBullet.prototype.note = function note(deviceParams, title, body, callback) {
     <li>description and source-code<pre class="apidocCodePre">function sendClipboard(clipOptions, callback) {
 	var options = clone(clipOptions);
 
-	options.type = &#x27;clip&#x27;;
+	options.type = 'clip';
 
 	this.sendEphemeral(options, callback);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-	conversation_iden: &#x27;+1 303 555 1212&#x27;,       // Phone number to send the SMS to
-	message: &#x27;Hello!&#x27;                           // The SMS message to send
+	conversation_iden: '+1 303 555 1212',       // Phone number to send the SMS to
+	message: 'Hello!'                           // The SMS message to send
 };
 
 pusher.sendSMS(options, function(error, response) {});
@@ -1704,8 +1697,8 @@ Send clipboard content.
 
 ```javascript
 var options = {
-source_user_iden: &#x22;ujpah72o0&#x22;,              // The iden of the user sending this message
-source_device_iden: &#x22;ujpah72o0sjAoRtnM0jc&#x22;, // The iden of the device sending this message
+source_user_iden: "ujpah72o0",              // The iden of the user sending this message
+source_device_iden: "ujpah72o0sjAoRtnM0jc", // The iden of the device sending this message
 ...</pre></li>
     </ul>
 
@@ -1723,7 +1716,7 @@ source_device_iden: &#x22;ujpah72o0sjAoRtnM0jc&#x22;, // The iden of the device 
 
 	var options = {
 		json: {
-			type: &#x27;push&#x27;,
+			type: 'push',
 			push: ephemerealOptions
 		}
 	};
@@ -1737,8 +1730,8 @@ source_device_iden: &#x22;ujpah72o0sjAoRtnM0jc&#x22;, // The iden of the device 
 PushBullet.prototype.sendSMS = function sendSMS(smsOptions, callback) {
 	var options = clone(smsOptions);
 
-	options.package_name = &#x27;com.pushbullet.android&#x27;;
-	options.type = &#x27;messaging_extension_reply&#x27;;
+	options.package_name = 'com.pushbullet.android';
+	options.type = 'messaging_extension_reply';
 
 	this.<span class="apidocCodeKeywordSpan">sendEphemeral</span>(options, callback);
 };
@@ -1763,8 +1756,8 @@ PushBullet.prototype.sendSMS = function sendSMS(smsOptions, callback) {
     <li>description and source-code<pre class="apidocCodePre">function sendSMS(smsOptions, callback) {
 	var options = clone(smsOptions);
 
-	options.package_name = &#x27;com.pushbullet.android&#x27;;
-	options.type = &#x27;messaging_extension_reply&#x27;;
+	options.package_name = 'com.pushbullet.android';
+	options.type = 'messaging_extension_reply';
 
 	this.sendEphemeral(options, callback);
 }</pre></li>
@@ -1774,7 +1767,7 @@ PushBullet.prototype.sendSMS = function sendSMS(smsOptions, callback) {
 Unmute a chat.
 
 ```javascript
-pusher.unmuteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.unmuteChat('udprOsjAsLtNTRAG', function(error, response) {});
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">sendSMS</span>(options, callback)
 
@@ -1782,8 +1775,8 @@ Send an SMS through a device.
 
 ```javascript
 var options = {
-	source_user_iden: &#x27;ujpah72o0&#x27;,              // The user iden of the user sending this message
-	target_device_iden: &#x27;ujpah72o0sjAoRtnM0jc&#x27;, // The iden of the device corresponding to the phone that should send the
+	source_user_iden: 'ujpah72o0',              // The user iden of the user sending this message
+	target_device_iden: 'ujpah72o0sjAoRtnM0jc', // The iden of the device corresponding to the phone that should send the
  SMS
 ...</pre></li>
     </ul>
@@ -1802,7 +1795,7 @@ var options = {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 	notification_tag: null,                 // Set to the notification_tag field from the mirrored notification
-	source_user_iden: &#x27;ujpah72o0&#x27;,          // Set to the source_user_iden field from the mirrored notification
+	source_user_iden: 'ujpah72o0',          // Set to the source_user_iden field from the mirrored notification
 };
 
 pusher.dismissEphemeral(options, function(error, response) {});
@@ -1853,7 +1846,7 @@ pusher.subscriptions(options, function(error, response) {});
 Subscribe to a channel.
 
 ```javascript
-pusher.subscribe(&#x27;jblow&#x27;, function(error, response) {});
+pusher.subscribe('jblow', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1919,7 +1912,7 @@ to control the data returned.
 Mute a chat.
 
 ```javascript
-pusher.muteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.muteChat('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">unmuteChat</span>(chatIden, callback)
@@ -1927,7 +1920,7 @@ pusher.muteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
 Unmute a chat.
 
 ```javascript
-pusher.unmuteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.unmuteChat('udprOsjAsLtNTRAG', function(error, response) {});
 
 ### PushBullet.sendSMS(options, callback)
 ...</pre></li>
@@ -1950,7 +1943,7 @@ pusher.unmuteChat(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
 Mute a subscription.
 
 ```javascript
-pusher.muteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.muteSubscription('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">unmuteSubscription</span>(subscriptionIden, callback)
@@ -1958,7 +1951,7 @@ pusher.muteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) 
 Unmute a subscription.
 
 ```javascript
-pusher.unmuteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.unmuteSubscription('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -1975,7 +1968,7 @@ pusher.unmuteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response
     <li>description and source-code<pre class="apidocCodePre">function unsubscribe(subscriptionIden, callback) {
 	var self = this;
 
-	self.request.post(PushBullet.SUBS_END_POINT + &#x27;/&#x27; + subscriptionIden, function(error, response, body) {
+	self.request.post(PushBullet.SUBS_END_POINT + '/' + subscriptionIden, function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
@@ -1984,7 +1977,7 @@ pusher.unmuteSubscription(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response
 Subscribe to a channel.
 
 ```javascript
-pusher.subscribe(&#x27;jblow&#x27;, function(error, response) {});
+pusher.subscribe('jblow', function(error, response) {});
 ```
 
 ### PushBullet.<span class="apidocCodeKeywordSpan">unsubscribe</span>(subscriptionIden, callback)
@@ -1992,7 +1985,7 @@ pusher.subscribe(&#x27;jblow&#x27;, function(error, response) {});
 Subscribe to a channel.
 
 ```javascript
-pusher.unsubscribe(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
+pusher.unsubscribe('udprOsjAsLtNTRAG', function(error, response) {});
 ```
 ...</pre></li>
     </ul>
@@ -2017,7 +2010,7 @@ pusher.unsubscribe(&#x27;udprOsjAsLtNTRAG&#x27;, function(error, response) {});
 		json: updates
 	};
 
-	self.request.post(PushBullet.CHATS_END_POINT + &#x27;/&#x27; + chatIden, options, function(error, response, body) {
+	self.request.post(PushBullet.CHATS_END_POINT + '/' + chatIden, options, function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
@@ -2056,13 +2049,13 @@ PushBullet.prototype.muteChat = function muteChat(chatIden, callback) {
 		json: deviceOptions
 	};
 
-	self.request.post(PushBullet.DEVICES_END_POINT + &#x27;/&#x27; + deviceIden, options, function(error, response, body) {
+	self.request.post(PushBullet.DEVICES_END_POINT + '/' + deviceIden, options, function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 var deviceOptions = {
-	nickname: &#x27;node-app&#x27;
+	nickname: 'node-app'
 };
 
 pusher.createDevice(deviceOptions, function(error, response) {});
@@ -2074,7 +2067,7 @@ Creates a new device.
 
 ```javascript
 var deviceOptions = {
-	nickname: &#x27;node-app&#x27;
+	nickname: 'node-app'
 };
 ...</pre></li>
     </ul>
@@ -2099,7 +2092,7 @@ var deviceOptions = {
 		json: updates
 	};
 
-	self.request.post(PushBullet.PUSH_END_POINT + &#x27;/&#x27; + pushIden, options, function(error, response, body) {
+	self.request.post(PushBullet.PUSH_END_POINT + '/' + pushIden, options, function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
@@ -2142,7 +2135,7 @@ PushBullet.prototype.dismissPush = function dismissPush(pushIden, callback) {
 		json: updates
 	};
 
-	self.request.post(PushBullet.SUBS_END_POINT + &#x27;/&#x27; + subscriptionIden, options, function(error, response, body) {
+	self.request.post(PushBullet.SUBS_END_POINT + '/' + subscriptionIden, options, function(error, response, body) {
 		self.handleResponse(error, response, body, callback);
 	});
 }</pre></li>
@@ -2188,37 +2181,37 @@ PushBullet.prototype.muteSubscription = function muteSubscription(subscriptionId
 
 	self.client = new WebSocketClient();
 
-	self.client.on(&#x27;connectFailed&#x27;, function(error) {
-		self.emit(&#x27;error&#x27;, error);
+	self.client.on('connectFailed', function(error) {
+		self.emit('error', error);
 	});
 
-	self.client.on(&#x27;connect&#x27;, function(connection) {
+	self.client.on('connect', function(connection) {
 
 		self.connection = connection;
 
-		self.emit(&#x27;connect&#x27;);
+		self.emit('connect');
 
-		connection.on(&#x27;error&#x27;, function(error) {
-			self.emit(&#x27;error&#x27;, error);
+		connection.on('error', function(error) {
+			self.emit('error', error);
 		});
 
-		connection.on(&#x27;close&#x27;, function() {
-			self.emit(&#x27;close&#x27;);
+		connection.on('close', function() {
+			self.emit('close');
 		});
 
-		connection.on(&#x27;message&#x27;, function(message) {
-			if (message.type === &#x27;utf8&#x27;) {
+		connection.on('message', function(message) {
+			if (message.type === 'utf8') {
 				var data = JSON.parse(message.utf8Data);
-				self.emit(&#x27;message&#x27;, data);
+				self.emit('message', data);
 
-				if (data.type === &#x27;nop&#x27;) {
-					self.emit(&#x27;nop&#x27;);
+				if (data.type === 'nop') {
+					self.emit('nop');
 				}
-				else if (data.type === &#x27;tickle&#x27;) {
-					self.emit(&#x27;tickle&#x27;, data.subtype);
+				else if (data.type === 'tickle') {
+					self.emit('tickle', data.subtype);
 				}
-				else if (data.type === &#x27;push&#x27;) {
-					self.emit(&#x27;push&#x27;, data.push);
+				else if (data.type === 'push') {
+					self.emit('push', data.push);
 				}
 			}
 		});
@@ -2226,7 +2219,7 @@ PushBullet.prototype.muteSubscription = function muteSubscription(subscriptionId
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 	notification_tag: null,                 // Set to the notification_tag field from the mirrored notification
-	source_user_iden: &#x27;ujpah72o0&#x27;,          // Set to the source_user_iden field from the mirrored notification
+	source_user_iden: 'ujpah72o0',          // Set to the source_user_iden field from the mirrored notification
 };
 
 pusher.dismissEphemeral(options, function(error, response) {});
@@ -2303,7 +2296,7 @@ Emitted when the stream has connected.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function connect() {
-	this.client.connect(STREAM_BASE + &#x27;/&#x27; + this.apiKey);
+	this.client.connect(STREAM_BASE + '/' + this.apiKey);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```
@@ -2333,3 +2326,4 @@ Disconnects from the stream.
     ]
 </div>
 </div>
+</body></html>
